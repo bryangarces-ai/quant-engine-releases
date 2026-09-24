@@ -16,12 +16,12 @@ Welcome to the official public distribution portal for **Zenthea Quant Engine**.
 
 ## 📥 Latest Release
 
-### [v1.0.0 — Production Release (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.0.0)
+### [v1.0.1 — Maintenance & UI Architecture Release (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.0.1)
 
 | Package | Format | Description |
 | :--- | :--- | :--- |
-| **[ZentheaQuant-v1.0.0-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.0.0/ZentheaQuant-v1.0.0-Windows.zip)** | `.zip` | **Full Package:** Standalone executable, documentation, and configuration templates |
-| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.0.0/ZentheaQuant.exe)** | `.exe` | **Standalone Binary:** Quick drop-in executable for existing users |
+| **[ZentheaQuant-v1.0.1-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.0.1/ZentheaQuant-v1.0.1-Windows.zip)** | `.zip` | **Full Package:** Standalone executable, documentation, and configuration templates |
+| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.0.1/ZentheaQuant.exe)** | `.exe` | **Standalone Binary:** Quick drop-in executable for existing users |
 
 ---
 
