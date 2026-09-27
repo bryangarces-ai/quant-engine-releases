@@ -16,33 +16,30 @@ Welcome to the official public distribution portal for **Zenthea Quant Engine**.
 
 ## 📥 Latest Release
 
-### [v1.0.6 — Supabase Multi-Device Cloud Sync & Dynamic Virtual Capital (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.0.6)
+### [v1.1.1 — Anti-Chop Guard, RVOL Volume Shield & Real-Time Telemetry Streaming (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.1.1)
 
 | Package | Format | Description |
 | :--- | :--- | :--- |
-| **[ZentheaQuant-v1.0.6-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.0.6/ZentheaQuant-v1.0.6-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
+| **[ZentheaQuant-v1.1.1-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.1.1/ZentheaQuant-v1.1.1-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
 
 ---
 
-## 🌟 What's New in v1.0.6
+## 🌟 What's New in v1.1.1
 
-* **Multi-Device Supabase Cloud Sync:**
-  * Real-time 2-way cloud synchronization for trade ledgers and compounded account balances across Desktop, Laptop, and new version releases.
-  * Individual tenant isolation by `SUPABASE_USER_ID`: Each coworker runs on their own private database or local storage with zero cross-contamination.
-  * Ultra-lean HTTPS REST sync protocol consuming <0.02% of Supabase Free Tier (<$0.00 forever).
-* **Dynamic User-Initiated Demo Capital:**
-  * Eliminates hardcoded balance constraints. You or any coworker can initiate whatever starting balance fits your test (e.g. `$50.00`, `$100.00`, `$161.00`, or `$500.00`).
-  * One-click **"Set Initial Bal"** in the Web Cockpit action dock updates your running capital, local `.env`, and Supabase cloud state simultaneously.
-* **Comprehensive Quantitative Research Data Logging (`public.quant_trades`):**
-  * Automatically records contract sizing, underlying strike prices, trade durations, and rich JSONB metadata (TypeSafe AI / JEV confidence scores, model rationale, spot price deltas, and wallet equity curves) for continuous machine learning analysis.
-* **Paper Trading Balance Reset Safeguard:**
-  * Resetting or changing your starting capital **NEVER deletes past trade history**. All historical trades, win/loss stats, and time-series logs in `quant_trades` remain 100% saved.
-* **JEV Predictive Smart Salvage Shield:**
-  * Autonomous early stop-loss bailout at **`$0.25`** contract floor with **120-second anti-wick time gating**, recovering ~50% of risked capital on breakdowns instead of suffering $0.00 total expirations.
-* **Battle-Tested Alpha Execution Core Restored:**
-  * Entry collar strictly bounded to **`$0.40 - $0.60`**.
-  * Full execution window from **`5s` to `265s`** from round open.
-  * Dynamic Early Take-Profit at **`$0.75`** with hybrid orderbook & spot delta valuation.
+* **RVOL (Relative Volume) Liquidity Shield:**
+  * `MIN_RVOL_THRESHOLD=0.70`: Prevents trading during low-volume weekend consolidation and illiquid off-hour sessions where binary fakeouts are common.
+  * `VOLUME_EXHAUSTION_BOOST_ENABLED=true`: Rewards high-volume climactic wick absorption with a +6.0% conviction boost when `RVOL >= 1.50`.
+  * Integrated RVOL and chop metrics directly into TypeSafe Jev AI decision state payload.
+* **ADX & Volatility Anti-Chop Squeeze Guard:**
+  * Automatically vetoes directional entries when 14-period ADX on 5m candles is below 20.0 or Bollinger Band Width % is below 0.18%.
+* **65% Minimum Alpha Conviction Hurdle:**
+  * Enforced 65.0% minimum win probability threshold across all directional strikes to offset binary option payout asymmetry (+82% vs -100%).
+* **Real-Time Open Position & Settlement Log Streaming:**
+  * `get_telemetry_payload()` dynamically serves live positions and history on every 1.5s polling cycle.
+  * Cockpit sidebar position card now tracks active trades across all assets (BTC, ETH, SOL) with real-time fill cost and target progress bar.
+  * Settlement log on Page 1 continuously streams new confirmed rounds and clearing badges without requiring browser refreshes.
+* **Interactive Risk Shield UI Controls:**
+  * Added dedicated controls in the Cockpit Risk Shields modal for Volume & RVOL, ADX Anti-Chop, and Conviction Hurdle with live dynamic updates.
 * **Zero-Knowledge Privacy Architecture:**
   * The developer collects **NO data**. All operations connect directly from the user's computer to their own private Supabase instance. Complete setup instructions included in `CLOUD_SYNC_SETUP_GUIDE.md`.
 
