@@ -16,29 +16,26 @@ Welcome to the official public distribution portal for **Zenthea Quant Engine**.
 
 ## 📥 Latest Release
 
-### [v1.1.4 — 15-Minute Macro Confluence, 5s Adaptive Cache & Calibrated 10-35s Observation Window (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.1.4)
+### [v1.1.5 — Calibrated Smart Salvage Stop-Loss & Automatic .env Migration (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.1.5)
 
 | Package | Format | Description |
 | :--- | :--- | :--- |
-| **[ZentheaQuant-v1.1.4-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.1.4/ZentheaQuant-v1.1.4-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
-| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.1.4/ZentheaQuant.exe)** | `.exe` | Standalone binary (drop-in update for existing folders) |
+| **[ZentheaQuant-v1.1.5-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.1.5/ZentheaQuant-v1.1.5-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
+| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.1.5/ZentheaQuant.exe)** | `.exe` | Standalone binary (drop-in update for existing folders) |
 
 ---
 
-## 🌟 What's New in v1.1.4
+## 🌟 What's New in v1.1.5
 
-* **15-Minute Macro Confluence Engine (Replacing 1-Hour Horizon):**
-  * Replaced the lagged 1-hour macro background with an agile 15-minute trend evaluation (optimal 3:1 ratio to 5m rounds).
-  * Eliminates the counter-trend trap where 1H bias forced trades into short/DOWN positions during fast intraday rebounds.
-  * Verified across 327 historical settled trades: elevated win rate from **64.2% to 77.0%** and net PnL from **+$153.10 to +$823.12 USD**.
-* **Adaptive 5-Second Candle Invalidation:**
-  * Added dynamic cache age acceleration: refreshes 5m OHLCV data every **5 seconds** during the opening 45s of each round.
-  * Provides multiple high-resolution data points right as opening wicks and volume surges form, eliminating stale data execution.
-* **Calibrated 10s–35s Observation & Strike Window:**
-  * Allots an initial 10-second observation window for the bar to form initial liquidity before striking between 10s and 35s.
-  * Guards against premature entries on opening volatility spikes.
-* **JEV System One Multi-Timeframe Prompt Alignment:**
-  * Updated AI Oracle state and prompt schemas to evaluate 5m price action directly against 15m swing structure.
+* **Calibrated Smart Salvage Stop-Loss (Cutting Losses by ~50%):**
+  * **Real Volatility Calibration:** Statistically grounded against 1,000 real 5m OKX candles (median body move 0.061%).
+  * **Configurable Adverse Delta Threshold (`SALVAGE_ADVERSE_DELTA_PCT=0.12`):** Triggers stop-loss bailout once spot moves $\ge 0.12\%$ against entry, eliminating $0.00 zero-value expirations.
+  * **Dynamic Binary Multiplier (`SALVAGE_CONTRACT_MULTIPLIER=1.80`):** Replaced the unresponsive 0.45 multiplier to accurately reflect binary contract probability decay.
+  * **Observation Buffer (`SALVAGE_WINDOW_START_SEC=90`):** Gives the position 90 seconds to breathe past opening noise before strictly defending capital.
+* **Automatic `.env` Migration Architecture:**
+  * When running `ZentheaQuant.exe`, the engine automatically detects missing shield settings in your existing desktop `.env` and safely appends them with optimal defaults without touching or overwriting your API keys.
+* **15-Minute Macro Confluence & 5s Adaptive Cache:**
+  * Carries over the verified 15-minute multi-timeframe horizon and 5-second opening cache refresh for high-resolution strike accuracy.
 
 ---
 
