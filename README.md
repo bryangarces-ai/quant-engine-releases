@@ -16,33 +16,37 @@ Welcome to the official public distribution portal for **Zenthea Quant Engine**.
 
 ## 📥 Latest Release
 
-### [v1.1.5 — Calibrated Smart Salvage Stop-Loss & Automatic .env Migration (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.1.5)
+### [v1.2.0 — Operational Presets & Sentinel Trade Decision Journal (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.2.0)
 
 | Package | Format | Description |
 | :--- | :--- | :--- |
-| **[ZentheaQuant-v1.1.5-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.1.5/ZentheaQuant-v1.1.5-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
-| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.1.5/ZentheaQuant.exe)** | `.exe` | Standalone binary (drop-in update for existing folders) |
+| **[ZentheaQuant-v1.2.0-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.2.0/ZentheaQuant-v1.2.0-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
+| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.2.0/ZentheaQuant.exe)** | `.exe` | Standalone binary (drop-in update for existing folders) |
 
 ---
 
-## 🌟 What's New in v1.1.5
+## 🌟 What's New in v1.2.0
 
-* **Calibrated Smart Salvage Stop-Loss (Cutting Losses by ~50%):**
-  * **Real Volatility Calibration:** Statistically grounded against 1,000 real 5m OKX candles (median body move 0.061%).
-  * **Configurable Adverse Delta Threshold (`SALVAGE_ADVERSE_DELTA_PCT=0.12`):** Triggers stop-loss bailout once spot moves $\ge 0.12\%$ against entry, eliminating $0.00 zero-value expirations.
-  * **Dynamic Binary Multiplier (`SALVAGE_CONTRACT_MULTIPLIER=1.80`):** Replaced the unresponsive 0.45 multiplier to accurately reflect binary contract probability decay.
-  * **Observation Buffer (`SALVAGE_WINDOW_START_SEC=90`):** Gives the position 90 seconds to breathe past opening noise before strictly defending capital.
-* **Automatic `.env` Migration Architecture:**
-  * When running `ZentheaQuant.exe`, the engine automatically detects missing shield settings in your existing desktop `.env` and safely appends them with optimal defaults without touching or overwriting your API keys.
-* **15-Minute Macro Confluence & 5s Adaptive Cache:**
-  * Carries over the verified 15-minute multi-timeframe horizon and 5-second opening cache refresh for high-resolution strike accuracy.
+* **1-Click Operational Preset Architecture:**
+  * **Weekday Strict Setup (`WEEKDAY_STRICT`):** Institutional strict discipline with active Anti-Chop filter, 0.70 RVOL liquidity hurdle, and a tight $0.54 price collar cap.
+  * **Weekend Flow Setup (`WEEKEND_FLOW`):** Adaptive weekend liquidity setup with Anti-Chop relaxed (OFF), 0.60 RVOL hurdle, $0.55 price collar cap, and $0.10 salvage floor for wide-ranging weekend swings.
+  * **Dynamic Customization Tracking:** Automatically badges manual slider adjustments as `(Customized)` in real time while preserving 1-click clean reset.
+* **Sentinel Trade Decision & Veto Audit Journal:**
+  * Real-time auditing of every model prediction, shield veto, and trade execution directly under the Cockpit HUD.
+  * Multi-device synchronization to Supabase Cloud `public.quant_decisions`.
+* **Local-First & Multi-Device Cloud Sync:**
+  * 100% offline isolation for coworkers without Supabase or credentials.
+  * Seamless 2-way cloud state persistence for licensed operators.
+* **Default Sizing Safety & Grounded Balance:**
+  * Kelly sizing OFF by default, 2.0% fixed capital allocation per trade.
+  * $40.00 daily drawdown safety circuit breaker.
 
 ---
 
 ## ⚡ Quick Start Guide (New Users)
 
 ### Step 1: Download & Extract
-1. Download **`ZentheaQuant-v1.0.6-Windows.zip`** from the link above.
+1. Download **`ZentheaQuant-v1.2.0-Windows.zip`** from the link above.
 2. Extract the zip file into a folder of your choice (e.g. `C:\Trading\ZentheaQuant\`).
 
 ### Step 2: Activate Your License
