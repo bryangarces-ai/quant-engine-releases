@@ -16,30 +16,33 @@ Welcome to the official public distribution portal for **Zenthea Quant Engine**.
 
 ## 📥 Latest Release
 
-### [v1.2.0 — Operational Presets & Sentinel Trade Decision Journal (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.2.0)
+### [v1.4.0 — Dual-Alpha & Multi-Asset Concurrency Scale Release (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.4.0)
 
 | Package | Format | Description |
 | :--- | :--- | :--- |
-| **[ZentheaQuant-v1.2.0-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.2.0/ZentheaQuant-v1.2.0-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
-| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.2.0/ZentheaQuant.exe)** | `.exe` | Standalone binary (drop-in update for existing folders) |
+| **[ZentheaQuant-v1.4.0-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.4.0/ZentheaQuant-v1.4.0-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
+| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.4.0/ZentheaQuant.exe)** | `.exe` | Standalone binary (drop-in update for existing folders with auto-reconciling `.env`) |
 
 ---
 
-## 🌟 What's New in v1.2.0
+## 🌟 What's New in v1.4.0
 
-* **1-Click Operational Preset Architecture:**
-  * **Weekday Strict Setup (`WEEKDAY_STRICT`):** Institutional strict discipline with active Anti-Chop filter, 0.70 RVOL liquidity hurdle, and a tight $0.54 price collar cap.
-  * **Weekend Flow Setup (`WEEKEND_FLOW`):** Adaptive weekend liquidity setup with Anti-Chop relaxed (OFF), 0.60 RVOL hurdle, $0.55 price collar cap, and $0.10 salvage floor for wide-ranging weekend swings.
-  * **Dynamic Customization Tracking:** Automatically badges manual slider adjustments as `(Customized)` in real time while preserving 1-click clean reset.
-* **Sentinel Trade Decision & Veto Audit Journal:**
-  * Real-time auditing of every model prediction, shield veto, and trade execution directly under the Cockpit HUD.
-  * Multi-device synchronization to Supabase Cloud `public.quant_decisions`.
-* **Local-First & Multi-Device Cloud Sync:**
-  * 100% offline isolation for coworkers without Supabase or credentials.
-  * Seamless 2-way cloud state persistence for licensed operators.
-* **Default Sizing Safety & Grounded Balance:**
-  * Kelly sizing OFF by default, 2.0% fixed capital allocation per trade.
-  * $40.00 daily drawdown safety circuit breaker.
+* **Dual-Alpha Execution Model (Mean Reversion + Trend Continuation Confluence):**
+  * Scales trading opportunities from 2–3 trades/day up to 15–30 trades/day across BTC, ETH, and SOL.
+  * Evaluates multi-timeframe 15m macro bias, 5m Fast EMA9 > EMA21 > EMA50 stack, momentum corridors ($50 \le RSI \le 68$ UP / $32 \le RSI \le 50$ DOWN), and $ADX_{14} \ge 20$.
+  * Macro Counter-Trend Veto blocks fading strong 15m institutional trends.
+* **Multi-Asset Sentinel Rotator (`ALL` Mode with Concurrency Barrier):**
+  * Concurrently monitors and trades BTC, ETH, and SOL.
+  * Enforces a hard **`max_concurrent_positions: 2`** barrier, capping maximum open market exposure to $\le \$6.10$ / 2.0% equity at 1.0% stake.
+* **Expanded Entry Timing Window (10s – 60s):**
+  * Confines entry strictly between seconds 10 and 60, eliminating API latency lockouts.
+* **10-Point Pre-Flight Sentinel Arming Checklist Modal:**
+  * Cyberpunk terminal checklist modal intercepting Sentinel arming from Standby.
+  * Audits in-memory and `.env` guardrail alignment with 1-click **`[⚡ Auto-Upgrade Config (.env)]`** auto-repair.
+* **Configuration Reconciler Engine (`EnvMigrator`):**
+  * Auto-reconciles missing environment variables on boot without modifying, clobbering, or leaking existing private API credentials.
+* **Conservative 1.0% Default Sizing:**
+  * Fixed 1.0% default risk allocation (~$3.05 stake / 6 contracts on ~$305 equity) with 1-click UI toggles for 2.0%, 3.0%, etc.
 
 ---
 
