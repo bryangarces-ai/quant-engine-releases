@@ -16,40 +16,43 @@ Welcome to the official public distribution portal for **Zenthea Quant Engine**.
 
 ## 📥 Latest Release
 
-### [v1.4.0 — Dual-Alpha & Multi-Asset Concurrency Scale Release (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.4.0)
+### [v1.5.0 — Asymmetric Value Collar & Pure Option A Hold Overhaul Release (Windows x64)](https://github.com/bryangarces-ai/quant-engine-releases/releases/tag/v1.5.0)
 
 | Package | Format | Description |
 | :--- | :--- | :--- |
-| **[ZentheaQuant-v1.4.0-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.4.0/ZentheaQuant-v1.4.0-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
-| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.4.0/ZentheaQuant.exe)** | `.exe` | Standalone binary (drop-in update for existing folders with auto-reconciling `.env`) |
+| **[ZentheaQuant-v1.5.0-Windows.zip](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.5.0/ZentheaQuant-v1.5.0-Windows.zip)** | `.zip` | **Full Package (Recommended):** Standalone executable, documentation, setup guide, and configuration templates |
+| **[ZentheaQuant.exe](https://github.com/bryangarces-ai/quant-engine-releases/releases/download/v1.5.0/ZentheaQuant.exe)** | `.exe` | Standalone binary (drop-in update for existing folders with auto-reconciling `.env`) |
 
 ---
 
-## 🌟 What's New in v1.4.0
+## 🌟 What's New in v1.5.0
 
-* **Dual-Alpha Execution Model (Mean Reversion + Trend Continuation Confluence):**
-  * Scales trading opportunities from 2–3 trades/day up to 15–30 trades/day across BTC, ETH, and SOL.
-  * Evaluates multi-timeframe 15m macro bias, 5m Fast EMA9 > EMA21 > EMA50 stack, momentum corridors ($50 \le RSI \le 68$ UP / $32 \le RSI \le 50$ DOWN), and $ADX_{14} \ge 20$.
-  * Macro Counter-Trend Veto blocks fading strong 15m institutional trends.
-* **Multi-Asset Sentinel Rotator (`ALL` Mode with Concurrency Barrier):**
-  * Concurrently monitors and trades BTC, ETH, and SOL.
-  * Enforces a hard **`max_concurrent_positions: 2`** barrier, capping maximum open market exposure to $\le \$6.10$ / 2.0% equity at 1.0% stake.
-* **Expanded Entry Timing Window (10s – 60s):**
-  * Confines entry strictly between seconds 10 and 60, eliminating API latency lockouts.
-* **10-Point Pre-Flight Sentinel Arming Checklist Modal:**
-  * Cyberpunk terminal checklist modal intercepting Sentinel arming from Standby.
-  * Audits in-memory and `.env` guardrail alignment with 1-click **`[⚡ Auto-Upgrade Config (.env)]`** auto-repair.
-* **Configuration Reconciler Engine (`EnvMigrator`):**
-  * Auto-reconciles missing environment variables on boot without modifying, clobbering, or leaking existing private API credentials.
-* **Conservative 1.0% Default Sizing:**
-  * Fixed 1.0% default risk allocation (~$3.05 stake / 6 contracts on ~$305 equity) with 1-click UI toggles for 2.0%, 3.0%, etc.
+* **Asymmetric Value Collar ($0.35–$0.45) (`core/exchange.py`, `core/prediction_engine.py`):**
+  * Strictly gates binary event contract acquisitions between **$0.35 and $0.45**.
+  * Rejects expensive contracts ($> \$0.45$) that created negative risk-reward traps in historical trading.
+  * Mathematically guarantees positive Risk-to-Reward Ratio ($\ge 1.22:1$ to $1.85:1$), dropping breakeven win rate to $\le 45\%$.
+* **Pure Option A Hold to Expiration (Zero Panic Selling):**
+  * Completely bypassed and disabled `Smart Salvage` ($0.25 bailouts) and `Wick Defense` ($0.001 dumpings).
+  * In-flight positions are held to full 300-second expiration, allowing winning strikes to settle for the full $1.00 (+100%) payout without being shaken out by mid-candle wick noise.
+  * Early Take-Profit disabled to capture maximum expiration edge.
+* **Pre-Flight JEV AI Conviction & 60%–80% Token Reduction:**
+  * Retained JEV System One neural model for pre-flight evaluation and conviction scoring ($\ge 65\%$).
+  * Powers the 3D Holographic WebGL Neural Orb and live Thought Trace stream on the Web Cockpit (`http://localhost:8888`).
+  * Completely purged in-flight polling calls (`evaluate_early_cashout` and `evaluate_salvage_bailout`), cutting API token consumption by **60%–80%**.
+* **Automated 1-Click .env Configuration Migration on Arming:**
+  * Clicking **"ARM"** or opening the Pre-Flight Checklist automatically reconciles and upgrades legacy configuration parameters to `v1.5.0` optimal values (`PRICE_COLLAR_MIN=0.35`, `PRICE_COLLAR_MAX=0.45`, `ENTRY_WINDOW_START_SEC=15`, `ENTRY_WINDOW_END_SEC=45`, `DAILY_DRAWDOWN_LIMIT=25.0`).
+  * Strictly preserves all private user credentials (`OKX_API_KEY`, `TYPESAFE_API_KEY`, `TELEGRAM_BOT_TOKEN`, `SUPABASE_KEY`) with automatic `.bak` backups.
+* **Risk Hardening:**
+  * Fixed lot sizing of 6 contracts (~$2.10–$2.70 risk per trade; ~0.7%–0.9% of capital).
+  * Daily drawdown circuit breaker calibrated to `$25.00 USDT`.
+  * Execution capture sweet-spot: **15s–45s**.
 
 ---
 
 ## ⚡ Quick Start Guide (New Users)
 
 ### Step 1: Download & Extract
-1. Download **`ZentheaQuant-v1.2.0-Windows.zip`** from the link above.
+1. Download **`ZentheaQuant-v1.5.0-Windows.zip`** from the link above.
 2. Extract the zip file into a folder of your choice (e.g. `C:\Trading\ZentheaQuant\`).
 
 ### Step 2: Activate Your License
@@ -78,7 +81,7 @@ Press **`1`** (or Enter) to launch the browser cockpit:
 When updating to a new version:
 
 1. Close the running `ZentheaQuant.exe` application.
-2. Download the latest **`ZentheaQuant-v1.0.6-Windows.zip`**.
+2. Download the latest **`ZentheaQuant-v1.5.0-Windows.zip`**.
 3. Drag the new `ZentheaQuant.exe` into your existing folder and choose **Replace**.
 4. Double-click `ZentheaQuant.exe`:
    * **Your machine license is permanently preserved.**
@@ -98,9 +101,4 @@ When updating to a new version:
 
 ## 💬 Support & Licensing
 To obtain a license key, request a machine binding reset, or report an issue:
-* **Contact:** Puzzled Programmer
-* **Bug Reports:** Open an issue via the [GitHub Issues](https://github.com/bryangarces-ai/quant-engine-releases/issues) tab in this repository.
-
----
-
-*© 2026 Puzzled Programmer — ZENTHEA Quant Research Lab. All rights reserved.*
+* Contact **Puzzled Programmer** via official private support channels.
